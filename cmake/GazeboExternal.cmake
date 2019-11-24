@@ -42,12 +42,12 @@ gazebo_declare(tinyexpr         GIT_REPOSITORY https://github.com/polyfem/tinyex
 # Custom import functions for header-only libraries
 ################################################################################
 
-gazebo_header_only(eigen TARGET Eigen3::Eigen PREFIX "")
-gazebo_header_only(cppoptlib DEPENDS eigen)
-gazebo_header_only(nanoflann)
-gazebo_header_only(pcg)
-gazebo_header_only(simple_svg)
-gazebo_header_only(nanosvg PREFIX "src")
+gazebo_header_only(eigen      TARGET Eigen3::Eigen)
+gazebo_header_only(cppoptlib  PREFIX "include" DEPENDS eigen)
+gazebo_header_only(nanoflann  PREFIX "include")
+gazebo_header_only(pcg        PREFIX "include")
+gazebo_header_only(simple_svg PREFIX "include")
+gazebo_header_only(nanosvg    PREFIX "src")
 
 ################################################################################
 # Custom import functions

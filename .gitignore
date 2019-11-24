@@ -35,7 +35,7 @@
 .vscode/
 .idea/
 build/
-/exteral
+/external
 /cmake-build-*
 /bin/
 /data

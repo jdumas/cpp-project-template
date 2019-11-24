@@ -153,14 +153,14 @@ file(WRITE ${CMAKE_BINARY_DIR}/GazeboHeaderOnly.cmake.in
         # Create \@ARGS_TARGET\@ target\n\
         add_library(\@ARGS_NAME\@ INTERFACE)\n\
         add_library(\@ARGS_TARGET\@ ALIAS \@ARGS_NAME\@)\n\
-        target_include_directories(\@ARGS_NAME\@ SYSTEM INTERFACE \"${\@ARGS_NAME\@_SOURCE_DIR}/\"\@ARGS_PREFIX\@)\n\
+        target_include_directories(\@ARGS_NAME\@ SYSTEM INTERFACE \"\${\@ARGS_NAME\@_SOURCE_DIR}/\@ARGS_PREFIX\@\")\n\
     endif()\n\
 endfunction()\n\
 ")
 
 # This needs to be a macro in order to populate the current scope with a new function
 macro(gazebo_header_only name)
-    cmake_parse_arguments(ARGS "" "PREFIX TARGET" "DEPENDS" ${ARGN})
+    cmake_parse_arguments(ARGS "" "PREFIX;TARGET" "DEPENDS" ${ARGN})
     set(ARGS_NAME ${name})
     if(NOT ARGS_PREFIX)
         set(ARGS_PREFIX "")
@@ -174,6 +174,7 @@ macro(gazebo_header_only name)
     set(__import_file "${CMAKE_BINARY_DIR}/gazebo_header_only_${name}.cmake")
     configure_file("${CMAKE_BINARY_DIR}/GazeboHeaderOnly.cmake.in" "${__import_file}" @ONLY)
     include("${__import_file}")
+    message(STATUS "Creating header-only target ${ARGS_TARGET} for library ${ARGS_NAME}")
 endmacro()
 
 ################################################################################
