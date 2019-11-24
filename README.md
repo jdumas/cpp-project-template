@@ -7,6 +7,12 @@ Template repository for C++ projects using CMake, libigl, etc.
 
 ### Getting Started
 
+Create a new github repository using this project [as template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+
+![](https://help.github.com/assets/images/help/repository/use-this-template-button.png)
+
+Then replace all placeholders with your new project name using this simple python script:
+
 ```
 ./misc/bootstrap.py <new_project_name>
 ```
@@ -58,15 +64,15 @@ With C++17, in theory the `<filesystem>` header from the Standard Template Libra
 
 ##### Logger
 
-<TODO>
+*TODO*
 
 ##### Clang-format
 
-<TODO>
+*TODO*
 
 ##### Sanitizers
 
-<TODO>
+*TODO*
 
 ### Useful links
 
