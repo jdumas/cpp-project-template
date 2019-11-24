@@ -1,4 +1,3 @@
-
 // Disable compiler warnings before including third party code
 #if defined(__clang__)
 #pragma clang diagnostic push

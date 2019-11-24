@@ -9,7 +9,7 @@ project(@project_name@)
 
 # CMP0063: Honor visibility properties for all target types.
 if(POLICY CMP0063)
-	cmake_policy(SET CMP0063 NEW)
+    cmake_policy(SET CMP0063 NEW)
 endif()
 
 # Check whether this is a top-level project
@@ -42,10 +42,10 @@ add_subdirectory(src)
 
 # Compile extras only if this is a top-level project
 if(@PROJECT_NAME@_TOPLEVEL_PROJECT)
-	# Unit tests
-	include(CTest)
-	enable_testing()
-	add_subdirectory(tests)
+    # Unit tests
+    include(CTest)
+    enable_testing()
+    add_subdirectory(tests)
 endif()
 
 # Set folders for Visual Studio/Xcode

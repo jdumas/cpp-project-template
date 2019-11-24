@@ -7,15 +7,15 @@ include(Catch)
 
 # Create test executable
 add_executable(@project_name@_tests
-	main.cpp
-	test_fibonacci.cpp
+    main.cpp
+    test_fibonacci.cpp
 )
 
 target_link_libraries(@project_name@_tests
-	PRIVATE
-		warnings::all
-		@project_name@::@project_name@
-		Catch2::Catch2
+    PRIVATE
+        warnings::all
+        @project_name@::@project_name@
+        Catch2::Catch2
 )
 
 catch_discover_tests(@project_name@_tests)
