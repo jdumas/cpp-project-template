@@ -21,6 +21,38 @@ Then replace all placeholders with your new project name using this simple pytho
 
 The main file you want to be looking at to add/update dependencies is `cmake/@Project_Name@External.cmake`. Do not look at `@Project_Name@Boilerplate.cmake`, this is the file doing the dirty laundry so that `@Project_Name@External.cmake` looks pretty. Everything else should speak for itself, mostly.
 
+We use CMake's [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html) mechanism to download external dependencies at CMake time so that they can be built alongside your main project. External dependencies are compiled statically so the produced executable is as self-contained as possible.
+The goal of this project is to provide a modern template for C++ project using CMake. Thus, you will need at least:
+
+- CMake 3.11
+- C++17
+
+The core mechanism used to import an external dependencies (download + create a CMake target) is the `@project_name@_import()` function. For example, to create a new executable that depends on libigl, CLI11 and tinyfiledialogs, you can use the following:
+
+```cmake
+add_executable(MyViewer
+    main.cpp
+    filedialogs.cpp
+    filedialogs.h
+    viewer.cpp
+    viewer.h
+)
+
+@project_name@_import(libigl cli11 tinyfiledialogs)
+
+target_link_libraries(MyViewer
+    PRIVATE
+        igl::opengl_glfw_imgui
+        CLI11::CLI11
+        tinyfiledialogs::tinyfiledialogs
+)
+
+# Use C++17
+target_compile_features(MyViewer PUBLIC cxx_std_17)
+```
+
+where `@project_name@` should be replaced by your project name when you run the `./misc/bootstrap.py` script. Note that the name given to the `@project_name@_import()` function is different from the target name (`Foo::Bar`) available once the library is imported. The table below lists all libraries which are available for import in this current template. One important detail to note is that *nothing is downloaded* if you do not import a library. Thus, adding libraries to this template will not "bloat" your starting project unless you decide to actually use it. The reasoning is that it should be easier to remove imported libraries from this template than to add a new one should you need it.
+
 ### Available Libraries
 
 | FetchContent name | Target name | Url |
