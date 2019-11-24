@@ -7,7 +7,7 @@ Template repository for C++ projects using CMake, libigl, etc.
 
 ### Getting Started
 
-Create a new github repository using this project [as template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+Create a new github repository using this project [as template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template):
 
 ![](https://help.github.com/assets/images/help/repository/use-this-template-button.png)
 
