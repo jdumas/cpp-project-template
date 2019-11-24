@@ -8,7 +8,7 @@
 #include <ghc/filesystem.hpp>
 #endif
 
-namespace gazebo {
+namespace @project_name@ {
 
 #if __has_include(<filesystem>)
 namespace fs = std::filesystem;
@@ -18,4 +18,4 @@ namespace fs = std::experimental::filesystem;
 namespace fs = ghc::filesystem;
 #endif
 
-}  // namespace gazebo
+}  // namespace @project_name@

@@ -3,7 +3,7 @@
 #include <iostream>
 ////////////////////////////////////////////////////////////////////////////////
 
-TEST_CASE("fibonacci", "[gazebo]")
+TEST_CASE("fibonacci", "[@project_name@]")
 {
     // TODO
 }

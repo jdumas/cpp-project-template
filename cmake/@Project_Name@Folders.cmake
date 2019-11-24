@@ -1,7 +1,7 @@
 # Sort projects inside the solution
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-function(gazebo_folder_targets FOLDER_NAME)
+function(@project_name@_folder_targets FOLDER_NAME)
     foreach(target IN ITEMS ${ARGN})
         if(TARGET ${target})
             set_target_properties(${target} PROPERTIES FOLDER "${FOLDER_NAME}")
@@ -9,15 +9,15 @@ function(gazebo_folder_targets FOLDER_NAME)
     endforeach()
 endfunction()
 
-function(gazebo_set_folders)
+function(@project_name@_set_folders)
 
-gazebo_folder_targets("ThirdParty/tbb"
+@project_name@_folder_targets("ThirdParty/tbb"
     tbb_static
     tbb_def_files
     tbb_asm
 )
 
-gazebo_folder_targets("ThirdParty"
+@project_name@_folder_targets("ThirdParty"
     catch2
     cli11
     cppoptlib
@@ -31,12 +31,12 @@ gazebo_folder_targets("ThirdParty"
     windingnumber
 )
 
-gazebo_folder_targets("Lib"
-    gazebo
+@project_name@_folder_targets("Lib"
+    @project_name@
 )
 
-gazebo_folder_targets("App"
-    GazeboViewer
+@project_name@_folder_targets("App"
+    @Project_Name@Viewer
 )
 
 endfunction()

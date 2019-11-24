@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
-#include <gazebo/filesystem.h>
+#include <@project_name@/filesystem.h>
 
 #include <igl/read_triangle_mesh.h>
-#include <gazebo/disable_warnings.h>
+#include <@project_name@/disable_warnings.h>
 #include <CLI/CLI.hpp>
-#include <gazebo/enable_warnings.h>
+#include <@project_name@/enable_warnings.h>
 
 #include <vector>
 ////////////////////////////////////////////////////////////////////////////////

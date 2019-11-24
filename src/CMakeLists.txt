@@ -1,2 +1,2 @@
-add_subdirectory(gazebo)
+add_subdirectory(@project_name@)
 add_subdirectory(viewer)

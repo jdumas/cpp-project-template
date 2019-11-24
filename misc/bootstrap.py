@@ -62,7 +62,7 @@ def parse_args():
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("target", help="target project name to rename into")
-    parser.add_argument("-s", "--source", default="gazebo", help="source project name to rename from")
+    parser.add_argument("-s", "--source", default="@Project_Name@", help="source project name to rename from")
     return parser.parse_args()
 
 

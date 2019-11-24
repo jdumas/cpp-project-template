@@ -6,7 +6,7 @@
 #include <iostream>
 ////////////////////////////////////////////////////////////////////////////////
 
-namespace gazebo {
+namespace @project_name@ {
 
 // -----------------------------------------------------------------------------
 
@@ -65,4 +65,4 @@ std::string open_folder(const std::string &defaultPath)
 
 // -----------------------------------------------------------------------------
 
-}  // namespace gazebo
+}  // namespace @project_name@

@@ -27,9 +27,6 @@ stages:
               scriptPath: 'misc/bootstrap.py'
               arguments: 'myproject'
 
-          - script: ./misc/bootstrap.py myproject
-            displayName: Prepare
-
           - script: >
               $(initVsShell) && powershell -command "& cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl -G Ninja -S . -B build"
             displayName: CMake

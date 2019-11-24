@@ -1,7 +1,7 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 3.11)
-project(gazebo)
+project(@project_name@)
 
 ################################################################################
 # Settings
@@ -15,9 +15,9 @@ endif()
 # Check whether this is a top-level project
 get_directory_property(HAS_PARENT PARENT_DIRECTORY)
 if(NOT HAS_PARENT)
-    set(GAZEBO_TOPLEVEL_PROJECT ON)
+    set(@PROJECT_NAME@_TOPLEVEL_PROJECT ON)
 else()
-    set(GAZEBO_TOPLEVEL_PROJECT OFF)
+    set(@PROJECT_NAME@_TOPLEVEL_PROJECT OFF)
 endif()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
@@ -32,7 +32,7 @@ include(Warnings)
 # Dependencies
 ################################################################################
 
-include(GazeboExternal)
+include(@Project_Name@External)
 
 ################################################################################
 # Subdirectories
@@ -41,7 +41,7 @@ include(GazeboExternal)
 add_subdirectory(src)
 
 # Compile extras only if this is a top-level project
-if(GAZEBO_TOPLEVEL_PROJECT)
+if(@PROJECT_NAME@_TOPLEVEL_PROJECT)
 	# Unit tests
 	include(CTest)
 	enable_testing()
@@ -49,5 +49,5 @@ if(GAZEBO_TOPLEVEL_PROJECT)
 endif()
 
 # Set folders for Visual Studio/Xcode
-include(GazeboFolders)
-gazebo_set_folders()
+include(@Project_Name@Folders)
+@project_name@_set_folders()

@@ -19,7 +19,7 @@ Then replace all placeholders with your new project name using this simple pytho
 
 ### Project Structure
 
-The main file you want to be looking at to add/update dependencies is `cmake/GazeboExternal.cmake`. Do not look at `GazeboBoilerplate.cmake`, this is the file doing the dirty laundry so that `GazeboExternal.cmake` looks pretty. Everything else should speak for itself, mostly.
+The main file you want to be looking at to add/update dependencies is `cmake/@Project_Name@External.cmake`. Do not look at `@Project_Name@Boilerplate.cmake`, this is the file doing the dirty laundry so that `@Project_Name@External.cmake` looks pretty. Everything else should speak for itself, mostly.
 
 ### Available Libraries
 
@@ -60,7 +60,7 @@ By default, we use libigl in header-only mode, single building in static mode ta
 
 ##### Filesystem
 
-With C++17, in theory the `<filesystem>` header from the Standard Template Library provides a cross-platform filesystem library. Unfortunately, compiler support is still lacking, in particular on macOS -- you need at least Xcode 11 and macOS 10.15, which may not be supported by our CI platforms yet. To that end, we define an alias target `std::filesystem`. This target will add the necessary linking flags if `<filesystem>` or `<experimental/filesystem>` are supported on your system. If not, it will download [ghc::filesystem](https://github.com/gulrak/filesystem) and use that as an alias. Automatic namespace forwarding is implemented in [filesystem.h](https://github.com/jdumas/cpp-project-template/blob/master/src/gazebo/filesystem.h) so you can use it directly.
+With C++17, in theory the `<filesystem>` header from the Standard Template Library provides a cross-platform filesystem library. Unfortunately, compiler support is still lacking, in particular on macOS -- you need at least Xcode 11 and macOS 10.15, which may not be supported by our CI platforms yet. To that end, we define an alias target `std::filesystem`. This target will add the necessary linking flags if `<filesystem>` or `<experimental/filesystem>` are supported on your system. If not, it will download [ghc::filesystem](https://github.com/gulrak/filesystem) and use that as an alias. Automatic namespace forwarding is implemented in [filesystem.h](https://github.com/jdumas/cpp-project-template/blob/master/src/@project_name@/filesystem.h) so you can use it directly.
 
 ##### Logger
 
