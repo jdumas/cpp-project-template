@@ -12,7 +12,7 @@ target_include_directories(gazebo PUBLIC ..)
 
 gazebo_import(libigl json spdlog tbb)
 
-find_package(Filesystem)
+find_package(Filesystem REQUIRED)
 
 target_link_libraries(gazebo
 	PRIVATE

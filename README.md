@@ -1,5 +1,7 @@
 # C++ Project Template
 
+[![Build Status](https://dev.azure.com/jdumas-github/cpp-project-template/_apis/build/status/jdumas.cpp-project-template?branchName=master)](https://dev.azure.com/jdumas-github/cpp-project-template/_build/latest?definitionId=1&branchName=master)
+
 Template repository for C++ projects using CMake, libigl, etc.
 
 ### Available libraries
@@ -23,7 +25,18 @@ Template repository for C++ projects using CMake, libigl, etc.
 
 ### Continuous Integration
 
+It is a good idea to ensure that your code always builds, and does so on all platforms (Windows, Linux, macOS). You do not want to push code that might leave your coworkers unhappy because they cannot build the project anymore. To that end, we use continuous integration via the following services:
+
+- [Travis CI](https://docs.travis-ci.com/user/tutorial/)
 - [Azure Pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github)
+
+Both support Windows, Linux and macOS. Feel free to adapt existing scripts to your needs. Travis can be used for private projects if you have an education account.
+
+<!-- TODO: Add continuous integration with Github Actions -->
+
+### Notes
+
+By default, we use libigl in header-only mode, single building in static mode takes a long time. However, as your project grows, you might want to switch the CMake option `LIBIGL_USE_STATIC_LIBRARY` to `ON` to accelerate incremental builds (this is especially useful in combination with a caching compiler such as `ccache`).
 
 ### Useful links
 
