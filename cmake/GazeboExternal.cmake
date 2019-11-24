@@ -8,6 +8,7 @@ gazebo_declare(catch2           GIT_REPOSITORY https://github.com/catchorg/Catch
 gazebo_declare(cli11            GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git             GIT_TAG v1.8.0)
 gazebo_declare(cppoptlib        GIT_REPOSITORY https://github.com/PatWie/CppNumericalSolvers.git GIT_TAG 2a0f98e7c54c35325641e05c035e43cafd570808)
 gazebo_declare(eigen            GIT_REPOSITORY https://github.com/eigenteam/eigen-git-mirror     GIT_TAG 3.3.7)
+gazebo_declare(ghc_filesystem   GIT_REPOSITORY https://github.com/gulrak/filesystem.git          GIT_TAG v1.2.10)
 gazebo_declare(fmt              GIT_REPOSITORY https://github.com/fmtlib/fmt                     GIT_TAG 6.0.0)
 gazebo_declare(json             GIT_REPOSITORY https://github.com/nlohmann/json                  GIT_TAG v3.7.3)
 gazebo_declare(libigl           GIT_REPOSITORY https://github.com/libigl/libigl.git              GIT_TAG 2ecb5fc85fc124ba4dd839c6b43a836a0d2a017e)
@@ -52,6 +53,16 @@ gazebo_header_only(nanosvg    PREFIX "src")
 ################################################################################
 # Custom import functions
 ################################################################################
+
+function(gazebo_import_filesystem)
+    if(NOT TARGET std::filesystem)
+        find_package(Filesystem COMPONENTS Final Experimental)
+        if(NOT Filesystem_FOUND)
+            gazebo_import(ghc_filesystem)
+            add_library(std::filesystem ALIAS ghc::filesystem)
+        endif()
+    endif()
+endfunction()
 
 function(gazebo_import_json)
     option(JSON_BuildTests      "Build the unit tests when BUILD_TESTING is enabled." OFF)

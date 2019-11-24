@@ -12,6 +12,7 @@ Template repository for C++ projects using CMake, libigl, etc.
 | `cli11`            | `CLI11::CLI11`                     | [CLI11](https://github.com/CLIUtils/CLI11.git)                           |
 | `cppoptlib`        | `cppoptlib::cppoptlib`             | [CppNumericalSolvers](https://github.com/PatWie/CppNumericalSolvers.git) |
 | `eigen`            | `Eigen3::Eigen`                    | [Eigen](https://github.com/eigenteam/eigen-git-mirror)                   |
+| `ghc_filesystem`   | `ghc::filesystem`                  | [Filesystem](https://github.com/gulrak/filesystem.git)                   |
 | `fmt`              | `fmt::fmt`                         | [{fmt}](https://github.com/fmtlib/fmt)                                   |
 | `json`             | `nlohmann_json::nlohmann_json`     | [JSON](https://github.com/nlohmann/json)                                 |
 | `libigl`           | `igl::core`, ...                   | [libigl](https://github.com/libigl/libigl.git)                           |
@@ -36,7 +37,13 @@ Both support Windows, Linux and macOS. Feel free to adapt existing scripts to yo
 
 ### Notes
 
+##### Libigl
+
 By default, we use libigl in header-only mode, single building in static mode takes a long time. However, as your project grows, you might want to switch the CMake option `LIBIGL_USE_STATIC_LIBRARY` to `ON` to accelerate incremental builds (this is especially useful in combination with a caching compiler such as `ccache`).
+
+##### Filesystem
+
+With C++17, in theory the `<filesystem>` header from the Standard Template Library provides a cross-platform filesystem library. Unfortunately, compiler support is still lacking, in particular on macOS -- you need at least Xcode 11 and macOS 10.15, which may not be supported by our CI platforms yet. To that end, we define an alias target `std::filesystem`. This target will add the necessary linking flags if `<filesystem>` or `<experimental/filesystem>` are supported on your system. If not, it will download [ghc::filesystem](https://github.com/gulrak/filesystem) and use that as an alias. Automatic namespace forwarding is implemented in [filesystem.h](https://github.com/jdumas/cpp-project-template/blob/master/src/gazebo/filesystem.h) so you can use it directly.
 
 ### Useful links
 
