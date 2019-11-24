@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Extra directories
+.vscode/
+.idea/
+build/
+/exteral
+/cmake-build-*
+/bin/
+/data
