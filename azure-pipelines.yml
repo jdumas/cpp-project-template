@@ -21,6 +21,9 @@ stages:
     - script: choco install ninja
       displayName: Install Ninja
 
+    - script: ./misc/bootstrap.py myproject
+      displayName: Prepare
+
     - script: >
         $(initVsShell) && powershell -command "& cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl -G Ninja -S . -B build"
       displayName: CMake
@@ -39,6 +42,9 @@ stages:
       vmImage: 'macOS-10.14'
 
     steps:
+    - script: ./misc/bootstrap.py myproject
+      displayName: Prepare
+
     - task: CMake@1
       inputs:
         cmakeArgs: '-DCMAKE_BUILD_TYPE=Release ..'

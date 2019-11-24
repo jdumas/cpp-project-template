@@ -47,7 +47,7 @@ def bootstrap(source, target):
         for path in Path(os.path.join(PROJECT_DIR, folder)).rglob('*'):
             if path.is_file():
                 process(path, source, target)
-    for file in ['CMakeLists.txt']:
+    for file in ['CMakeLists.txt', 'README.md']:
         path = Path(os.path.join(PROJECT_DIR, file))
         process(path, source, target)
     # Process folders afterwards
