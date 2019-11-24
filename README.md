@@ -1,5 +1,6 @@
 # C++ Project Template
 
+[![Build Status](https://travis-ci.com/jdumas/cpp-project-template.svg?branch=master)](https://travis-ci.com/jdumas/cpp-project-template)
 [![Build Status](https://dev.azure.com/jdumas-github/cpp-project-template/_apis/build/status/jdumas.cpp-project-template?branchName=master)](https://dev.azure.com/jdumas-github/cpp-project-template/_build/latest?definitionId=1&branchName=master)
 
 Template repository for C++ projects using CMake, libigl, etc.
