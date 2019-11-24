@@ -12,6 +12,8 @@ target_include_directories(gazebo PUBLIC ..)
 
 gazebo_import(libigl json spdlog tbb)
 
+find_package(Filesystem)
+
 target_link_libraries(gazebo
 	PRIVATE
 		warnings::all
@@ -20,12 +22,8 @@ target_link_libraries(gazebo
 		nlohmann_json::nlohmann_json
 		spdlog::spdlog
 		tbb::tbb
+		std::filesystem
 )
-
-# Filesystem library
-if(UNIX)
-	target_link_libraries(gazebo PUBLIC stdc++fs)
-endif()
 
 # Use C++17
 target_compile_features(gazebo PUBLIC cxx_std_17)
